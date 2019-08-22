@@ -20,11 +20,15 @@
 set +e
 
 function install_ansible() {
+    # Installing pip3
+    wget http://ftp.us.debian.org/debian/pool/main/p/python-pip/python3-pip_18.1-5_all.deb -O /workspace/python3-pip.deb
+    apt-get install /workspace/python3-pip.deb
+
     # Requirements for Ansible playbooks
-    pip install --user kubernetes PyYAML openshift
+    pip3 install --user kubernetes PyYAML openshift
 
     # Install ansible
-    pip install --user ansible
+    pip3 install --user ansible
 
     # Test ansible installation
     command ansible --version
